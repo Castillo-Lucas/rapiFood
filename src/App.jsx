@@ -1,9 +1,12 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import React, { useRef, useState } from "react";
+import CancelledCards from "./components/CancelledCards";
+import DeliveredCards from "./components/DeliveredCards";
+import GreenCards from "./components/GreenCards";
+import RedCards from "./components/RedCards";
+import YellowCards from "./components/YellowCards";
+
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
@@ -35,6 +38,24 @@ function App() {
             />
           </div>
 
+          {/*Delivery*/}
+          <div className="w-11/12 ml-5">
+            <label className="relative inline-flex items-center mr-5 cursor-pointer">
+              <input type="checkbox" value="" className="sr-only peer" />
+              <div className="w-10 h-5 bg-gray-500 rounded-full peer peer-focus:ring-dark-400 dark:peer-focus:ring-teal-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-400 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-100 peer-checked:bg-teal-600"></div>
+              <span className="font-normal text-base text-gray-100 ml-3">
+                Envio con Delivery
+              </span>
+            </label>
+            <p
+              id="helper-checkbox-text"
+              className="pl-12 text-xs font-normal text-gray-500 dark:text-gray-300"
+            >
+              El servicio de Delivery tiene un costo de $100 y el tiempo de
+              entrega depende del mismo.
+            </p>
+          </div>
+
           {/*Domicilio*/}
           <div className="my-6">
             <label
@@ -61,7 +82,7 @@ function App() {
             </label>
             <select
               id="categorias"
-              class="block p-2 ml-4 mt-1 w-11/12 text-gray-100/60 text-base bg-transparent border-0 border-b-2 border-gray-100/40 dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              className="block p-2 ml-4 mt-1 w-11/12 text-gray-100/60 text-base bg-transparent border-0 border-b-2 border-gray-100/40 dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             >
               <option
                 className="font-normal text-base text-gray-600 my-1 bg-gray-200"
@@ -138,7 +159,7 @@ function App() {
             </label>
             <select
               id="producto"
-              class="block p-2 ml-4 mt-1 w-11/12 text-gray-100/60 text-base bg-transparent border-0 border-b-2 border-gray-100/40 dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              className="block p-2 ml-4 mt-1 w-11/12 text-gray-100/60 text-base bg-transparent border-0 border-b-2 border-gray-100/40 dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             >
               <option
                 className="font-normal text-base text-gray-600 my-1 bg-gray-200"
@@ -218,7 +239,7 @@ function App() {
               <input
                 type="text"
                 id="cantidad"
-                class="pb-1 ml-2  w-8 text-gray-100/60 text-base text-center bg-transparent border-0 border-b-2 border-gray-100/40 dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+                className="pb-1 ml-2  w-8 text-gray-100/60 text-base text-center bg-transparent border-0 border-b-2 border-gray-100/40 dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
               ></input>
             </div>
             <p className="block font-medium text-base text-neutral-100 mr-7">
@@ -239,7 +260,7 @@ function App() {
             </label>
             <select
               id="pago"
-              class="block p-2 ml-4 mt-1 w-11/12 text-gray-100/60 text-base bg-transparent border-0 border-b-2 border-gray-100/40 dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              className="block p-2 ml-4 mt-1 w-11/12 text-gray-100/60 text-base bg-transparent border-0 border-b-2 border-gray-100/40 dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             >
               <option
                 className="font-normal text-base text-gray-600 my-1 bg-gray-200"
@@ -285,23 +306,7 @@ function App() {
             </select>
           </div>
 
-          {/*Delivery*/}
-          <div className="w-11/12 ml-5">
-            <label className="relative inline-flex items-center mr-5 cursor-pointer">
-              <input type="checkbox" value="" className="sr-only peer" />
-              <div className="w-10 h-5 bg-gray-500 rounded-full peer peer-focus:ring-dark-400 dark:peer-focus:ring-teal-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-400 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-100 peer-checked:bg-teal-600"></div>
-              <span className="font-normal text-base text-gray-100 ml-3">
-                Envio con Delivery
-              </span>
-            </label>
-            <p
-              id="helper-checkbox-text"
-              className="pl-12 text-xs font-normal text-gray-500 dark:text-gray-300"
-            >
-              El servicio de Delivery tiene un costo de $100 y el tiempo de
-              entrega depende del mismo.
-            </p>
-          </div>
+          
 
           {/*Observaciones */}
           <div className="my-6">
@@ -322,7 +327,7 @@ function App() {
           {/*Boton*/}
           <button
             type="button"
-            class="font-normal text-base text-neutral-100 text-center
+            className="font-normal text-base text-neutral-100 text-center
             w-11/12 ml-4 py-2.5 mb-5
             rounded-lg border border-gray-400 hover:bg-teal-600 hover:font-medium  active:bg-teal-900 active:font-normal transition-colors"
           >
@@ -331,10 +336,40 @@ function App() {
           
         </form>
 
-        <div className="col-span-4 xl:col-span-3 bg-zinc-600"></div>
+        <div className="col-span-4 xl:col-span-3 grid-rows-4 bg-zinc-600">
+          <div className="grid grid-rows-5 grid-flow-col gap-12 pt-10 px-10">
+
+            {/*Fila 1*/}
+            <div className="grid grid-cols-1">                     
+              <GreenCards />                                        
+            </div>
+
+            {/*Fila 2*/}
+            <div className="grid grid-cols-1">                     
+              <YellowCards />                                        
+            </div>
+
+            {/*Fila 3*/}
+            <div className="grid grid-cols-1">                     
+              <RedCards />                                        
+            </div>
+
+            {/*Fila 4*/}
+            <div className="grid grid-cols-1">                     
+              <CancelledCards />                                        
+            </div>
+
+            {/*Fila 5*/}
+            <div className="grid grid-cols-1">                     
+              <DeliveredCards />                                        
+            </div>
+
+          </div>
+          
+        </div>
       </div>
     </div>
   );
-}
+} 
 
 export default App;
