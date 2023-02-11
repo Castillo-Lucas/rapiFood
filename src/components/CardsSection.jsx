@@ -4,7 +4,7 @@ import Cards from "./Cards";
 function CardsSection({setShowModal}){
 
     return(
-        <div className="col-span-4 xl:col-span-3 grid-rows-4 bg-zinc-700 md:h-screen md:overflow-auto">
+        <div className="col-span-4 xl:col-span-3 grid-rows-4 bg-zinc-700 xl:h-screen xl:overflow-auto">
             <div className="grid grid-rows-5 grid-flow-col gap-10 pt-3 mx-10">
 
             {/*Fila 1*/}

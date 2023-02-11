@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 const SectionAnidada = ({
+  delivery,
+  precioDelivery,
   categories,
   setCategories,
   products,
@@ -11,10 +13,29 @@ const SectionAnidada = ({
   setPrice,
   generarID,
 }) => {
-    
   useEffect(() => {
-    setPrice(cantidad * precio);
+    if (delivery === true) {
+      setPrice(cantidad * precio + precioDelivery);
+    } else if (delivery === false) {
+      setPrice(cantidad * precio);
+    }
   }, [cantidad]);
+
+  useEffect(() => {
+    if (delivery === true) {
+      setPrice(cantidad * precio + precioDelivery);
+    } else if (delivery === false) {
+      setPrice(cantidad * precio);
+    }
+  }, [products]);
+
+  useEffect(() => {
+    if (delivery === true) {
+      setPrice(cantidad * precio + precioDelivery);
+    } else if (delivery === false) {
+      setPrice(cantidad * precio);
+    }
+  }, [delivery]);
 
   //Productos ordenados por categoria
   const prodPorCategoria = {};
@@ -158,7 +179,7 @@ const SectionAnidada = ({
           className="block font-medium text-base text-neutral-100 ml-5"
           defaultValue={"DEFAULT"}
         >
-          Selecciona la Categoría
+          Selecciona la Categoría *
         </label>
 
         <select
@@ -197,7 +218,7 @@ const SectionAnidada = ({
           htmlFor="producto"
           className="block font-medium text-base text-neutral-100 ml-5"
         >
-          Producto
+          Producto * 
         </label>
         <select
           id="producto"
@@ -236,7 +257,7 @@ const SectionAnidada = ({
             htmlFor="cantidad"
             className="block font-medium text-base text-neutral-100 ml-5"
           >
-            Cantidad:
+            Cantidad *
           </label>
 
           <input
@@ -247,13 +268,22 @@ const SectionAnidada = ({
             onChange={(e) => setCantidad(e.target.value)}
           ></input>
         </div>
-        <p className="block font-medium text-base text-neutral-100 md:mr-14 mr-7">
+        <p className="block font-medium text-base text-neutral-100 mr-4 sm:mr-10 md:mr-16 lg:mr-20 xl:mr-6">
           Precio{" "}
           <span className="font-normal text-base text-gray-100 my-1">
             ${price}
           </span>
         </p>
       </div>
+      {delivery === true ? (
+        <div className="flex justify-end">
+          <p className="block text-xs font-normal text-gray-500 dark:text-gray-300 p-0 -mt-8  mr-4 sm:mr-10 md:mr-16 lg:mr-20 xl:mr-6">
+            El precio incluye delivery
+          </p>
+        </div>
+      ) : (
+        <p></p>
+      )}
     </div>
   );
 };
