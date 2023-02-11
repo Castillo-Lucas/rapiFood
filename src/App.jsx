@@ -1,20 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import CardsSection from "./components/CardsSection";
 import FormSection from "./components/FormSection";
 import "./App.css";
 
 function App() {
+  const [pedido, setPedido] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  
 
   return (
     <div className="App">
       <div className="grid grid-cols-4 h-screen">
 
         {/*Form Section*/}
-        <FormSection />
+        <FormSection 
+          pedido ={pedido}
+          setPedido = {setPedido}
+        />
 
         {/*Cards Section*/}
-         <CardsSection setShowModal = {setShowModal}/>
+         <CardsSection 
+          setShowModal = {setShowModal}
+          pedido = {pedido}
+         />
       </div>
 
       {/*Modal*/}

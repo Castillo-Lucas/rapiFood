@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SectionAnidada from "./SectionAnidada";
 import MedPgo from "./MedPgo";
 
-function FormSection() {
+function FormSection({ pedido, setPedido }) {
   //States
   const [nombreApellido, setNombreApellido] = useState("");
   const [delivery, setDelivery] = useState(true);
@@ -11,12 +11,12 @@ function FormSection() {
   const [products, setProducts] = useState("");
   const [cantidad, setCantidad] = useState(0);
   const [price, setPrice] = useState("");
-  const [medPgo, setMedPgo] = useState("");
-  const [observaciones, setObservaciones] = useState("");
+  const [medPgo, setMedPgo] = useState("");  
   const [pagaCon, setPagaCon] = useState("");
   const [vuelto, setVuelto] = useState("");
   const [cantCtas, setCantCtas] = useState(0);
   const [valorCta, setValorCta] = useState(0);
+  const [observaciones, setObservaciones] = useState("");
 
   const [error, setError] = useState(false);
   const precioDelivery = 100;
@@ -52,6 +52,27 @@ function FormSection() {
 
       return;
     }
+
+    setError(false);
+
+    const objetoPedido = {
+      nombreApellido,
+      delivery,
+      domicilio,
+      categories,
+      products,
+      cantidad,
+      price,
+      medPgo,
+      pagaCon,
+      vuelto,
+      cantCtas,
+      valorCta,
+      observaciones,
+      id: generarID()
+    }
+
+    setPedido([...pedido, objetoPedido])
 
     //Se vuelven todos los States a Cero
     setNombreApellido("");
