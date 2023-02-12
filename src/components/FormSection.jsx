@@ -11,7 +11,7 @@ function FormSection({ pedido, setPedido }) {
   const [products, setProducts] = useState("");
   const [cantidad, setCantidad] = useState(0);
   const [price, setPrice] = useState("");
-  const [medPgo, setMedPgo] = useState("");  
+  const [medPgo, setMedPgo] = useState("");
   const [pagaCon, setPagaCon] = useState("");
   const [vuelto, setVuelto] = useState("");
   const [cantCtas, setCantCtas] = useState(0);
@@ -37,7 +37,6 @@ function FormSection({ pedido, setPedido }) {
     if (
       [
         nombreApellido,
-        domicilio,
         categories,
         products,
         cantidad,
@@ -69,10 +68,10 @@ function FormSection({ pedido, setPedido }) {
       cantCtas,
       valorCta,
       observaciones,
-      id: generarID()
-    }
+      id: generarID(),
+    };
 
-    setPedido([...pedido, objetoPedido])
+    setPedido([...pedido, objetoPedido]);
 
     //Se vuelven todos los States a Cero
     setNombreApellido("");
@@ -148,22 +147,26 @@ function FormSection({ pedido, setPedido }) {
       </div>
 
       {/*Domicilio*/}
-      <div className="my-6">
-        <label
-          htmlFor="domicilio"
-          className="block font-medium text-base text-neutral-100 ml-5"
-        >
-          Domicilio *
-        </label>
-        <input
-          id="domicilio"
-          type="text"
-          placeholder="Domicilio del cliente"
-          className="block p-2 ml-4 mt-1 w-11/12 text-gray-100 text-base bg-transparent border-0 border-b-2 border-gray-100/40 dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-          value={domicilio}
-          onChange={(e) => SetDomicilio(e.target.value)}
-        />
-      </div>
+      {delivery === true ? (
+        <div className="my-6">
+          <label
+            htmlFor="domicilio"
+            className="block font-medium text-base text-neutral-100 ml-5"
+          >
+            Domicilio
+          </label>
+          <input
+            id="domicilio"
+            type="text"
+            placeholder="Domicilio del cliente"
+            className="block p-2 ml-4 mt-1 w-11/12 text-gray-100 text-base bg-transparent border-0 border-b-2 border-gray-100/40 dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            value={domicilio}
+            onChange={(e) => SetDomicilio(e.target.value)}
+          />
+        </div>
+      ) : (
+        console.log("sin delivery")
+      )}      
 
       {/*Section Anidada*/}
       <SectionAnidada
