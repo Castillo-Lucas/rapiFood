@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 
-function Cards({ pedido, setShowModal, setMensajeModal }) {
+function Cards({ pedido, setShowModal, setMensajeModal, setEditCard }) {
   const {
     nombreApellido,
     delivery,
@@ -19,7 +19,7 @@ function Cards({ pedido, setShowModal, setMensajeModal }) {
 
   const handleModal = () => {
     setShowModal(true);
-    setMensajeModal(observaciones);
+    setMensajeModal(pedido);
   };
 
   return (
@@ -101,6 +101,7 @@ function Cards({ pedido, setShowModal, setMensajeModal }) {
               className="font-normal text-base text-neutral-100 text-center
                       w-full py-2 mt-2
                       rounded-l-lg border border-gray-400 hover:bg-amber-600/80 hover:font-medium  active:bg-amber-900 active:font-normal transition-colors"
+              onClick={() => setEditCard(pedido)}
             >
               Editar
             </button>

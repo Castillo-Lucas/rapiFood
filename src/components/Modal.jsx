@@ -1,6 +1,13 @@
 import React from "react";
 
-const Modal = ({ showModal, setShowModal, mensajeModal }) => {
+const Modal = ({ showModal, setShowModal, mensajeModal, setEditCard }) => {
+
+
+  const handleEditar = () => {
+    setShowModal(false)
+    setEditCard(mensajeModal)
+  }
+
   return (
     <div>
       {showModal ? (
@@ -35,12 +42,12 @@ const Modal = ({ showModal, setShowModal, mensajeModal }) => {
                       Observaciones
                     </h4>
                     <p className="mt-2 text-[15px] leading-relaxed text-gray-400">
-                      {mensajeModal}
+                      {mensajeModal.observaciones}
                     </p>
                     <div className="items-center gap-2 mt-3 sm:flex">
                       <button
                         className="w-5/12 sm:w-full mt-2 p-2.5 flex-1 font-normal text-base text-neutral-100 text-center rounded-l-lg sm:rounded-lg border border-gray-400 hover:bg-amber-600/80  hover:font-medium  active:bg-amber-900 active:font-normal transition-colors"
-                        onClick={() => setShowModal(false)}
+                        onClick={handleEditar}
                       >
                         Editar
                       </button>

@@ -15,7 +15,7 @@ import "../styles.css";
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 
-function CardsSection({ pedido, setShowModal, setMensajeModal }) {
+function CardsSection({ pedido, setShowModal, setMensajeModal, setEditCard }) {
   console.log(pedido);
 
   return (
@@ -60,6 +60,7 @@ function CardsSection({ pedido, setShowModal, setMensajeModal }) {
                     pedido={pedidos}
                     setShowModal={setShowModal}
                     setMensajeModal={setMensajeModal}
+                    setEditCard = {setEditCard}
                   />
                 </SwiperSlide>
               ))}

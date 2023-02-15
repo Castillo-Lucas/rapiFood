@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SectionAnidada from "./SectionAnidada";
 import MedPgo from "./MedPgo";
 
-function FormSection({ pedido, setPedido }) {
+function FormSection({ pedido, setPedido, editCard, setEditCard }) {
   //States
   const [nombreApellido, setNombreApellido] = useState("");
   const [delivery, setDelivery] = useState(true);
@@ -21,6 +21,24 @@ function FormSection({ pedido, setPedido }) {
   const [error, setError] = useState(false);
   const precioDelivery = 100;
 
+  useEffect(() => {
+    if (Object.keys(editCard).length > 0) {
+      setNombreApellido(editCard.nombreApellido);
+      setDelivery(editCard.delivery);
+      SetDomicilio(editCard.domicilio);
+      setCategories(editCard.categories);
+      setProducts(editCard.products);
+      setCantidad(editCard.cantidad);
+      setPrice(editCard.price);
+      setMedPgo(editCard.medPgo);
+      setPagaCon(editCard.pagaCon);
+      setVuelto(editCard.vuelto);
+      setCantCtas(editCard.cantCtas);
+      setValorCta(editCard.valorCta);
+      setObservaciones(editCard.observaciones);
+    }
+  }, [editCard]);
+
   const generarID = () => {
     const Id1 = Math.random().toString(36).substring(2);
     const Id2 = Date.now().toString(36);
@@ -34,15 +52,7 @@ function FormSection({ pedido, setPedido }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      [
-        nombreApellido,
-        categories,
-        products,
-        cantidad,
-        medPgo,
-      ].includes("")
-    ) {
+    if ([nombreApellido, categories, products, cantidad, medPgo].includes("")) {
       setError(true);
 
       setTimeout(() => {
@@ -71,11 +81,21 @@ function FormSection({ pedido, setPedido }) {
       id: generarID(),
     };
 
-    setPedido([...pedido, objetoPedido]);
+    if (Object.keys(editCard).length >= 1) {
+      const pedidoActualizado = pedido.map((pedidoState) =>
+        pedidoState.id === editCard.id ? objetoPedido : pedidoState
+      );
+
+      setPedido(pedidoActualizado);
+
+      setEditCard({});
+    } else {
+      setPedido([...pedido, objetoPedido]);
+    }
 
     //Se vuelven todos los States a Cero
     setNombreApellido("");
-    setDelivery(true);
+    setDelivery(true);  /*setDelivery(objetoPedido.delivery);*/
     SetDomicilio("");
     setCategories("");
     setProducts("");
@@ -126,7 +146,7 @@ function FormSection({ pedido, setPedido }) {
         <label className="relative inline-flex items-center mr-5 cursor-pointer">
           <input
             type="checkbox"
-            defaultChecked
+            defaultChecked={delivery}
             className="sr-only peer"
             onChange={(e) => {
               handleDelivery(e.target.checked);
@@ -166,7 +186,7 @@ function FormSection({ pedido, setPedido }) {
         </div>
       ) : (
         console.log("sin delivery")
-      )}      
+      )}
 
       {/*Section Anidada*/}
       <SectionAnidada
@@ -232,7 +252,9 @@ function FormSection({ pedido, setPedido }) {
             w-11/12 ml-4 py-2.5 mb-5
             rounded-lg border border-gray-400 hover:bg-teal-600 hover:font-medium  active:bg-teal-900 active:font-normal transition-colors"
       >
-        Registrar Pedido
+        {Object.keys(editCard).length >= 1
+          ? "Guardar Cambios"
+          : "Registrar Pedido"}
       </button>
     </form>
   );
