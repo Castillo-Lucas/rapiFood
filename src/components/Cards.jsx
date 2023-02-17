@@ -1,6 +1,9 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
+import Contador from "./Contador";
 
 function Cards({ pedido, setShowModal, setMensajeModal, setEditCard }) {
+  const [time, setTime] = useState(120);
+
   const {
     nombreApellido,
     delivery,
@@ -14,8 +17,6 @@ function Cards({ pedido, setShowModal, setMensajeModal, setEditCard }) {
     observaciones,
     id,
   } = pedido;
-
-  console.log(id);
 
   const handleModal = () => {
     setShowModal(true);
@@ -118,12 +119,21 @@ function Cards({ pedido, setShowModal, setMensajeModal, setEditCard }) {
 
         {/*Estado*/}
         <div className="flex justify-between">
-          <p className="mt-3 font-bold text-lg text-center text-emerald-500 dark:text-gray-400">
-            A Tiempo
-          </p>
-          <span className="mt-3 font-bold text-lg text-center text-neutral-100 dark:text-gray-400">
-            10:30
-          </span>
+          {time >= 81 ? (
+            <p className="mt-3 font-bold text-lg text-center text-emerald-500 dark:text-gray-400">
+              A Tiempo
+            </p>
+          ) : time >= 41 ? (
+            <p className="mt-3 font-bold text-lg text-center text-orange-300 dark:text-gray-400">
+              A Tiempo
+            </p>
+          ) : (
+            <p className="mt-3.5 font-bold text-base text-center text-yellow-300 dark:text-gray-400  animate-pulse">
+              Tiempo agotandose
+            </p>
+          )}
+
+          <Contador time={time} setTime={setTime} />
         </div>
       </div>
     </div>

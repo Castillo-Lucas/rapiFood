@@ -10,8 +10,6 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [mensajeModal, setMensajeModal] = useState("");
 
-  console.log(editCard)
-
 
   return (
     <div className="App">

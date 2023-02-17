@@ -16,7 +16,6 @@ import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 
 function CardsSection({ pedido, setShowModal, setMensajeModal, setEditCard }) {
-  console.log(pedido);
 
   return (
     <div className="col-span-4 xl:col-span-3 grid-rows-4 bg-zinc-700 xl:h-screen xl:overflow-auto">

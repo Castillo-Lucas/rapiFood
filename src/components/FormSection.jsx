@@ -184,9 +184,7 @@ function FormSection({ pedido, setPedido, editCard, setEditCard }) {
             onChange={(e) => SetDomicilio(e.target.value)}
           />
         </div>
-      ) : (
-        console.log("sin delivery")
-      )}
+      ) : null}
 
       {/*Section Anidada*/}
       <SectionAnidada
