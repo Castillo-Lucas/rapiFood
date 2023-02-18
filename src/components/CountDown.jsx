@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Contador = ({ time, setTime }) => {
+const CountDown = ({ time, setTime }) => {
 
   useEffect(() => {
     const timer =
@@ -22,4 +22,4 @@ const Contador = ({ time, setTime }) => {
   );
 };
 
-export default Contador;
+export default CountDown;

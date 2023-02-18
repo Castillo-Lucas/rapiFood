@@ -1,70 +1,47 @@
-import React, { useRef, useState } from "react";
-import Cards from "./Cards";
+import React from "react";
+import SwiperUno from "./SwiperUno";
+import SwiperDos from "./SwiperDos";
 
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
-import "../styles.css";
-
-// import required modules
-import { Pagination } from "swiper";
-import { Navigation } from "swiper";
-
-function CardsSection({ pedido, setShowModal, setMensajeModal, setEditCard }) {
-
+function CardsSection({
+  pedido,
+  setPedido,
+  pedidoRetrasado,
+  setpedidoRetrasado,
+  setShowModal,
+  setMensajeModal,
+  setEditCard,
+  ordenAgotada,
+}) {
   return (
     <div className="col-span-4 xl:col-span-3 grid-rows-4 bg-zinc-700 xl:h-screen xl:overflow-auto">
-      {pedido.length >= 1 ? (
+      {pedido.length >= 1 || pedidoRetrasado.length >= 1 ? (
         <div className="grid grid-rows-5 grid-flow-col gap-10 pt-3 mx-10">
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={10}
-            navigation={true}
-            pagination={{
-              clickable: true,
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-              },
-              1024: {
-                slidesPerView: 4,
-                spaceBetween: 20,
-              },
-              1775: {
-                slidesPerView: 5,
-                spaceBetween: 0,
-              },
-            }}
-            modules={[Navigation, Pagination]}
-            className="mySwiper"
-          >
-            {/*Fila 1*/}
-
+          {/*Fila 1*/}
+          {pedido.length >= 1 ? (
             <div className="grid grid-cols-1">
-              {pedido.map((pedidos) => (
-                <SwiperSlide key={pedidos.id}>
-                  <Cards
-                    key={pedidos.id}
-                    pedido={pedidos}
-                    setShowModal={setShowModal}
-                    setMensajeModal={setMensajeModal}
-                    setEditCard = {setEditCard}
-                  />
-                </SwiperSlide>
-              ))}
+              <SwiperUno
+                pedido={pedido}
+                setPedido={setPedido}
+                setShowModal={setShowModal}
+                setMensajeModal={setMensajeModal}
+                setEditCard={setEditCard}
+                ordenAgotada={ordenAgotada}
+              />
             </div>
-          </Swiper>
+          ) : null}
+
+          {/*Fila 2*/}
+          {pedidoRetrasado.length >= 1 ? (
+            <div className="grid grid-cols-1">
+              <SwiperDos
+                pedidoRetrasado={pedidoRetrasado}
+                setpedidoRetrasado={setpedidoRetrasado}
+                setShowModal={setShowModal}
+                setMensajeModal={setMensajeModal}
+                setEditCard={setEditCard}
+              />
+            </div>
+          ) : null}
         </div>
       ) : (
         <div className="flex h-screen mx-auto my-auto">
