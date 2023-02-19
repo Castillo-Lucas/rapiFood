@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import CountDown from "./CountDown";
+import "../styles.css";
 
 function CardsAtiempo({
   pedido,
@@ -8,34 +10,64 @@ function CardsAtiempo({
   setMensajeModal,
   setEditCard,
   ordenAgotada,
-  setpedidoRetrasado
+  setpedidoRetrasado,
 }) {
-  const [time, setTime] = useState(20);
-
   const {
     nombreApellido,
     delivery,
     domicilio,
     products,
-    cantidad,
     price,
     medPgo,
-    pagaCon,
     vuelto,
     observaciones,
     id,
   } = pedido;
+
+  const [editTime, setEditTime] = useState();
+
+  useEffect(() => {
+    if (editTime === 0) {
+      ordenAgotada(pedido);
+    }
+  }, [editTime]);
 
   const handleModal = () => {
     setShowModal(true);
     setMensajeModal(pedido);
   };
 
-  useEffect(() => {
-    if (time === 0) {
-      ordenAgotada(pedido);
-    }
-  }, [time]);
+  const handleEntregar = () => {
+    Swal.fire({
+      text: "Confirmar entrega del pedido!",
+      icon: "info",
+      iconColor: "#0D9488",
+      confirmButtonText: "Entregar Pedido",
+      confirmButtonColor: "#B4650B",
+      showDenyButton: true,
+      denyButtonText: "No entregar aun",
+    }).then((response) => {
+      if (response.isConfirmed) {
+        console.log("pedido entregado");
+      }
+    });
+  };
+
+  const handleCancelar = () => {
+    Swal.fire({
+      text: "¿Deseas cancelar el pedido?",
+      icon: "error",
+      iconColor: "#C53C3C",
+      confirmButtonText: "Mantener Pedido",
+      confirmButtonColor: "#B4650B",
+      showDenyButton: true,
+      denyButtonText: "Cancelar Pedido",
+    }).then((response) => {
+      if (response.isDenied) {
+        console.log("pedido canelado");
+      }
+    });
+  };
 
   return (
     <div className="w-60 px-5 py-3 border border-zinc-700 rounded-lg bg-zinc-900">
@@ -105,6 +137,7 @@ function CardsAtiempo({
           className="font-normal text-base text-neutral-100 text-center
             w-full py-2 mb-1
             rounded-lg border border-gray-400 hover:bg-teal-600 hover:font-medium  active:bg-teal-900 active:font-normal transition-colors"
+          onClick={handleEntregar}
         >
           Entregado
         </button>
@@ -124,6 +157,7 @@ function CardsAtiempo({
             className="font-normal text-base text-neutral-100 text-center
               w-full py-2 mt-2
               rounded-r-lg border border-gray-400 hover:bg-red-500/80 hover:font-medium  active:bg-red-900 active:font-normal transition-colors"
+            onClick={handleCancelar}
           >
             Cancelar
           </button>
@@ -132,11 +166,11 @@ function CardsAtiempo({
 
       {/*Estado*/}
       <div className="flex justify-between">
-        {time >= 81 ? (
+        {editTime >= 81 ? (
           <p className="mt-3 font-bold text-lg text-center text-emerald-500 dark:text-gray-400">
             A Tiempo
           </p>
-        ) : time >= 41 ? (
+        ) : editTime >= 41 ? (
           <p className="mt-3 font-bold text-lg text-center text-orange-300 dark:text-gray-400">
             A Tiempo
           </p>
@@ -146,7 +180,7 @@ function CardsAtiempo({
           </p>
         )}
 
-        <CountDown time={time} setTime={setTime} />
+        <CountDown editTime={editTime} setEditTime={setEditTime} />
       </div>
     </div>
   );

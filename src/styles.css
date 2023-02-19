@@ -85,4 +85,47 @@
   .swiper-button-next {
     margin-right: -8px;
   }
-     
+
+
+
+/*Sweet Alert 2*/    
+
+.swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
+    background: rgba(255, 255, 255, 0.361)!important;
+}
+
+.swal2-popup{
+  background-color: #18181B !important;
+  border-radius: 10px !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+}
+
+
+.swal2-html-container{
+  color: #FFFFFF !important;
+}
+
+
+/*Botones de Sweet Alert 2*/
+.swal2-confirm{
+  background-color: transparent !important;
+  border: 1px solid grey !important;
+  box-shadow: none !important;
+}
+
+.swal2-confirm:hover{
+  background-color: #0D9488 !important;
+}
+
+.swal2-deny{
+  background-color: transparent !important;
+  border: 1px solid grey !important;
+  box-shadow: none !important;
+}
+
+.swal2-deny:hover{
+  background-color: #C53C3C !important;
+}
+
+
+

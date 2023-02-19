@@ -1,5 +1,7 @@
 import React from "react";
+import Swal from "sweetalert2";
 import CountUp from "./CountUp";
+import "../styles.css";
 
 const CardsRetrasadas = ({
   pedidoRetrasado,
@@ -22,11 +24,41 @@ const CardsRetrasadas = ({
     id,
   } = pedidoRetrasado;
 
-  console.log(pedidoRetrasado);
-
   const handleModal = () => {
     setShowModal(true);
-    setMensajeModal(pedido);
+    setMensajeModal(pedidoRetrasado);
+  };
+
+  const handleEntregar = () => {
+    Swal.fire({
+      text: "Confirmar entrega del pedido!",
+      icon: "info",
+      iconColor: "#0D9488",
+      confirmButtonText: "Entregar Pedido",
+      confirmButtonColor: "#B4650B",
+      showDenyButton: true,
+      denyButtonText: "No entregar aun",
+    }).then((response) => {
+      if (response.isConfirmed) {
+        console.log("pedido entregado");
+      }
+    });
+  };
+
+  const handleCancelar = () => {
+    Swal.fire({
+      text: "¿Deseas cancelar el pedido?",
+      icon: "error",
+      iconColor: "#C53C3C",
+      confirmButtonText: "Mantener Pedido",
+      confirmButtonColor: "#B4650B",
+      showDenyButton: true,
+      denyButtonText: "Cancelar Pedido",
+    }).then((response) => {
+      if (response.isDenied) {
+        console.log("pedido canelado");
+      }
+    });
   };
 
   return (
@@ -97,6 +129,7 @@ const CardsRetrasadas = ({
           className="font-normal text-base text-neutral-100 text-center
               w-full py-2 mb-1
               rounded-lg border border-gray-400 hover:bg-teal-600 hover:font-medium  active:bg-teal-900 active:font-normal transition-colors"
+          onClick={handleEntregar}
         >
           Entregado
         </button>
@@ -107,7 +140,7 @@ const CardsRetrasadas = ({
             className="font-normal text-base text-neutral-100 text-center
                 w-full py-2 mt-2
                 rounded-l-lg border border-gray-400 hover:bg-amber-600/80 hover:font-medium  active:bg-amber-900 active:font-normal transition-colors"
-            onClick={() => setEditCard(pedido)}
+            onClick={() => setEditCard(pedidoRetrasado)}
           >
             Editar
           </button>
@@ -116,6 +149,7 @@ const CardsRetrasadas = ({
             className="font-normal text-base text-neutral-100 text-center
                 w-full py-2 mt-2
                 rounded-r-lg border border-gray-400 hover:bg-red-500/80 hover:font-medium  active:bg-red-900 active:font-normal transition-colors"
+            onClick={handleCancelar}
           >
             Cancelar
           </button>

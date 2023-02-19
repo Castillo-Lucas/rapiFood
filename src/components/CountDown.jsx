@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-const CountDown = ({ time, setTime }) => {
+const CountDown = ({ editTime, setEditTime }) => {
+
+  const [time, setTime] = useState(30); 
 
   useEffect(() => {
     const timer =
@@ -14,6 +16,10 @@ const CountDown = ({ time, setTime }) => {
 
   const CntDwnMinutes = Math.floor(time / 60);
   const CntDwnSeconds = (time % 60).toString().padStart(2, "0");
+
+  useEffect(() => {
+    setEditTime(time)
+  }, [time]);
 
   return (
     <div>

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import SectionAnidada from "./SectionAnidada";
 import MedPgo from "./MedPgo";
 
-function FormSection({ pedido, setPedido, editCard, setEditCard }) {
+function FormSection({ pedido, setPedido, pedidoRetrasado, setpedidoRetrasado, editCard, setEditCard }) {
   //States
   const [nombreApellido, setNombreApellido] = useState("");
-  const [delivery, setDelivery] = useState(true);
+  const [delivery, setDelivery] = useState(false);
   const [domicilio, SetDomicilio] = useState("");
   const [categories, setCategories] = useState("");
   const [products, setProducts] = useState("");
@@ -93,9 +93,20 @@ function FormSection({ pedido, setPedido, editCard, setEditCard }) {
       setPedido([...pedido, objetoPedido]);
     }
 
+    if (Object.keys(editCard).length >= 1) {
+      const pedidoRetrasadoAct = pedidoRetrasado.map((pedidoState) =>
+        pedidoState.id === editCard.id ? objetoPedido : pedidoState
+      );
+
+      setpedidoRetrasado(pedidoRetrasadoAct);
+
+      setEditCard({});
+    }
+
+    
     //Se vuelven todos los States a Cero
     setNombreApellido("");
-    setDelivery(true);  /*setDelivery(objetoPedido.delivery);*/
+    setDelivery(false);  /*setDelivery(objetoPedido.delivery);*/
     SetDomicilio("");
     setCategories("");
     setProducts("");
@@ -146,13 +157,16 @@ function FormSection({ pedido, setPedido, editCard, setEditCard }) {
         <label className="relative inline-flex items-center mr-5 cursor-pointer">
           <input
             type="checkbox"
-            defaultChecked={delivery}
+            checked={delivery}            
             className="sr-only peer"
             onChange={(e) => {
               handleDelivery(e.target.checked);
             }}
           />
-          <div className="w-10 h-5 bg-gray-500 rounded-full peer peer-focus:ring-dark-400 dark:peer-focus:ring-teal-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-400 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-100 peer-checked:bg-teal-600"></div>
+          <div className="w-10 h-5 bg-gray-500 rounded-full peer peer-focus:ring-dark-400 dark:peer-focus:ring-teal-800
+           dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute 
+           after:top-0.5 after:left-[2px] after:bg-white after:border-gray-400 after:border after:rounded-full after:h-5 after:w-5 
+           after:transition-all dark:border-gray-100 peer-checked:bg-teal-600"></div>
           <span className="font-normal text-base text-gray-100 ml-3">
             Envio con Delivery
           </span>

@@ -8,11 +8,9 @@ function App() {
   const [pedido, setPedido] = useState([]);
   const [pedidoRetrasado, setpedidoRetrasado] = useState([]);
   const [editCard, setEditCard] = useState({});
+  
   const [showModal, setShowModal] = useState(false);
   const [mensajeModal, setMensajeModal] = useState("");
-
-  console.log(pedido)
-  console.log(pedidoRetrasado)
 
   const ordenAgotada = (ped) => {    
     let pedidoRetr = pedido.filter((orden) => orden.id === ped.id);
@@ -30,6 +28,8 @@ function App() {
         <FormSection
           pedido={pedido}
           setPedido={setPedido}
+          pedidoRetrasado = {pedidoRetrasado}
+          setpedidoRetrasado = {setpedidoRetrasado}
           editCard={editCard}
           setEditCard={setEditCard}
         />

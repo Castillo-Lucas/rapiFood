@@ -1,5 +1,7 @@
 import React from "react";
 import CardsAtiempo from "./CardsAtiempo";
+import CountDown from "./CountDown";
+
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,6 +24,8 @@ function SwiperUno({
   setMensajeModal,
   setEditCard,
   ordenAgotada,
+  editTime,
+  setEditTime
 }) {
   return (
     <div>
@@ -63,6 +67,8 @@ function SwiperUno({
               setMensajeModal={setMensajeModal}
               setEditCard={setEditCard}
               ordenAgotada = {ordenAgotada}
+              editTime = {editTime}
+              setEditTime = {setEditTime}
             />
           </SwiperSlide>
         ))}
