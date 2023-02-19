@@ -6,8 +6,6 @@ import "../styles.css";
 function CardsAtiempo({
   pedido,
   setPedido,
-  setShowModal,
-  setMensajeModal,
   setEditCard,
   ordenAgotada,
   setpedidoRetrasado,
@@ -33,8 +31,20 @@ function CardsAtiempo({
   }, [editTime]);
 
   const handleModal = () => {
-    setShowModal(true);
-    setMensajeModal(pedido);
+    Swal.fire({
+      title: "Observaciones",
+      text: `${pedido.observaciones}`,
+      icon: "info",
+      iconColor: "#0D9488",
+      confirmButtonText: "Editar",
+      confirmButtonColor: "#B4650B",
+      showDenyButton: true,
+      denyButtonText: "Volver",
+    }).then((response) => {
+      if (response.isConfirmed) {
+        setEditCard(pedido);
+      }
+    });
   };
 
   const handleEntregar = () => {

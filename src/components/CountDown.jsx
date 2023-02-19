@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const CountDown = ({ editTime, setEditTime }) => {
 
-  const [time, setTime] = useState(30); 
+  const [time, setTime] = useState(20); 
 
   useEffect(() => {
     const timer =

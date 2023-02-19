@@ -6,8 +6,6 @@ import "../styles.css";
 const CardsRetrasadas = ({
   pedidoRetrasado,
   setpedidoRetrasado,
-  setShowModal,
-  setMensajeModal,
   setEditCard,
 }) => {
   const {
@@ -25,8 +23,21 @@ const CardsRetrasadas = ({
   } = pedidoRetrasado;
 
   const handleModal = () => {
-    setShowModal(true);
-    setMensajeModal(pedidoRetrasado);
+
+    Swal.fire({
+      title: "Observaciones",
+      text: `${pedidoRetrasado.observaciones}`,
+      icon: "info",
+      iconColor: "#0D9488",
+      confirmButtonText: "Editar",
+      confirmButtonColor: "#B4650B",
+      showDenyButton: true,
+      denyButtonText: "Volver",
+    }).then((response) => {
+      if (response.isConfirmed) {
+        setEditCard(pedidoRetrasado);
+      }
+    });
   };
 
   const handleEntregar = () => {

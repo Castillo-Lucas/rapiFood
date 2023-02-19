@@ -7,8 +7,6 @@ function CardsSection({
   setPedido,
   pedidoRetrasado,
   setpedidoRetrasado,
-  setShowModal,
-  setMensajeModal,
   setEditCard,
   ordenAgotada,
 }) {
@@ -22,8 +20,6 @@ function CardsSection({
               <SwiperUno
                 pedido={pedido}
                 setPedido={setPedido}
-                setShowModal={setShowModal}
-                setMensajeModal={setMensajeModal}
                 setEditCard={setEditCard}
                 ordenAgotada={ordenAgotada}
               />
@@ -36,8 +32,6 @@ function CardsSection({
               <SwiperDos
                 pedidoRetrasado={pedidoRetrasado}
                 setpedidoRetrasado={setpedidoRetrasado}
-                setShowModal={setShowModal}
-                setMensajeModal={setMensajeModal}
                 setEditCard={setEditCard}
               />
             </div>

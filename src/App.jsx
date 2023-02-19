@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import CardsSection from "./components/CardsSection";
 import FormSection from "./components/FormSection";
-import Modal from "./components/Modal";
 import "./App.css";
 
 function App() {
   const [pedido, setPedido] = useState([]);
   const [pedidoRetrasado, setpedidoRetrasado] = useState([]);
   const [editCard, setEditCard] = useState({});
-  
-  const [showModal, setShowModal] = useState(false);
-  const [mensajeModal, setMensajeModal] = useState("");
 
   const ordenAgotada = (ped) => {    
     let pedidoRetr = pedido.filter((orden) => orden.id === ped.id);
@@ -36,23 +32,12 @@ function App() {
 
         {/*Cards Section*/}
         <CardsSection
-          setShowModal={setShowModal}
           pedido={pedido}          
           setPedido={setPedido}
-          setMensajeModal={setMensajeModal}
           setEditCard={setEditCard}
           ordenAgotada={ordenAgotada}
           pedidoRetrasado = {pedidoRetrasado}
           setpedidoRetrasado = {setpedidoRetrasado}
-        />
-
-        {/*Modal*/}
-        <Modal
-          showModal={showModal}
-          setShowModal={setShowModal}
-          mensajeModal={mensajeModal}
-          pedido={pedido}
-          setEditCard={setEditCard}
         />
       </div>
     </div>
