@@ -1,27 +1,37 @@
 import React from "react";
 import SwiperUno from "./SwiperUno";
 import SwiperDos from "./SwiperDos";
+import SwiperTres from "./SwiperTres";
 
 function CardsSection({
   pedido,
   setPedido,
   pedidoRetrasado,
   setpedidoRetrasado,
+  pedidoEntregado,
+  setPedidoEntregado,
   setEditCard,
   ordenAgotada,
+  ordenEntregada,
+  eliminarEntregada
 }) {
+
+  console.log(pedidoEntregado)
+
   return (
     <div className="col-span-4 xl:col-span-3 grid-rows-4 bg-zinc-700 xl:h-screen xl:overflow-auto">
-      {pedido.length >= 1 || pedidoRetrasado.length >= 1 ? (
-        <div className="grid grid-rows-5 grid-flow-col gap-10 pt-3 mx-10">
+      {pedido.length >= 1 || pedidoRetrasado.length >= 1  || pedidoEntregado.length >= 1 ? (
+        <div className="grid grid-rows-4 grid-flow-col gap-10 pt-3 mx-10">
           {/*Fila 1*/}
           {pedido.length >= 1 ? (
             <div className="grid grid-cols-1">
               <SwiperUno
                 pedido={pedido}
                 setPedido={setPedido}
+                setPedidoEntregado={setPedidoEntregado}
                 setEditCard={setEditCard}
                 ordenAgotada={ordenAgotada}
+                ordenEntregada={ordenEntregada}
               />
             </div>
           ) : null}
@@ -33,6 +43,17 @@ function CardsSection({
                 pedidoRetrasado={pedidoRetrasado}
                 setpedidoRetrasado={setpedidoRetrasado}
                 setEditCard={setEditCard}
+              />
+            </div>
+          ) : null}
+
+          {/*Fila 3*/}
+          {pedidoEntregado.length >= 1 ? (
+            <div className="grid grid-cols-1">
+              <SwiperTres
+                pedidoEntregado={pedidoEntregado}
+                setPedidoEntregado={setPedidoEntregado}
+                eliminarEntregada={eliminarEntregada}
               />
             </div>
           ) : null}

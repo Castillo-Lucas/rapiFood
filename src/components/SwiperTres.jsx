@@ -1,6 +1,5 @@
 import React from "react";
-import CardsAtiempo from "./CardsAtiempo";
-import CountDown from "./CountDown";
+import CardsEntregadas from "./CardsEntregadas";
 
 
 // Import Swiper React components
@@ -17,13 +16,9 @@ import "../styles.css";
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 
-function SwiperUno({
-  pedido,
-  setPedido,
-  setEditCard,
-  ordenAgotada,
-  ordenEntregada,
-}) {
+function SwiperTres({pedidoEntregado, setPedidoEntregado, eliminarEntregada}) {
+
+    console.log(pedidoEntregado)
   return (
     <div>
       <Swiper
@@ -54,15 +49,13 @@ function SwiperUno({
         modules={[Navigation, Pagination]}
         className="mySwiper"
       >
-        {pedido.map((pedidos) => (
+        {pedidoEntregado.map((pedidos) => (
           <SwiperSlide key={pedidos.id}>
-            <CardsAtiempo
+            <CardsEntregadas
               key={pedidos.id}
-              pedido={pedidos}
-              setPedido = {setPedido}
-              setEditCard={setEditCard}
-              ordenAgotada = {ordenAgotada}
-              ordenEntregada = {ordenEntregada}
+              pedidoEntregado={pedidos}
+              setPedidoEntregado = {setPedidoEntregado}
+              eliminarEntregada={eliminarEntregada}
             />
           </SwiperSlide>
         ))}
@@ -71,4 +64,4 @@ function SwiperUno({
   );
 }
 
-export default SwiperUno;
+export default SwiperTres;

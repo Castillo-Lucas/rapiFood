@@ -5,10 +5,9 @@ import "../styles.css";
 
 function CardsAtiempo({
   pedido,
-  setPedido,
   setEditCard,
   ordenAgotada,
-  setpedidoRetrasado,
+  ordenEntregada,
 }) {
   const {
     nombreApellido,
@@ -22,13 +21,29 @@ function CardsAtiempo({
     id,
   } = pedido;
 
-  const [editTime, setEditTime] = useState();
+  const [editTime, setEditTime] = useState();  
 
   useEffect(() => {
     if (editTime === 0) {
       ordenAgotada(pedido);
     }
   }, [editTime]);
+
+  const handleEntregar = () => {
+    Swal.fire({
+      text: "Confirmar entrega del pedido!",
+      icon: "info",
+      iconColor: "#0D9488",
+      confirmButtonText: "Entregar Pedido",
+      confirmButtonColor: "#B4650B",
+      showDenyButton: true,
+      denyButtonText: "No entregar aun",
+    }).then((response) => {
+      if (response.isConfirmed) {
+        ordenEntregada(pedido)
+      }
+    });
+  };
 
   const handleModal = () => {
     Swal.fire({
@@ -43,22 +58,6 @@ function CardsAtiempo({
     }).then((response) => {
       if (response.isConfirmed) {
         setEditCard(pedido);
-      }
-    });
-  };
-
-  const handleEntregar = () => {
-    Swal.fire({
-      text: "Confirmar entrega del pedido!",
-      icon: "info",
-      iconColor: "#0D9488",
-      confirmButtonText: "Entregar Pedido",
-      confirmButtonColor: "#B4650B",
-      showDenyButton: true,
-      denyButtonText: "No entregar aun",
-    }).then((response) => {
-      if (response.isConfirmed) {
-        console.log("pedido entregado");
       }
     });
   };
