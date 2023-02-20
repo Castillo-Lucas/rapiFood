@@ -13,10 +13,9 @@ function CardsSection({
   setEditCard,
   ordenAgotada,
   ordenEntregada,
+  ordenRetrasadaEntregada,
   eliminarEntregada
 }) {
-
-  console.log(pedidoEntregado)
 
   return (
     <div className="col-span-4 xl:col-span-3 grid-rows-4 bg-zinc-700 xl:h-screen xl:overflow-auto">
@@ -43,6 +42,8 @@ function CardsSection({
                 pedidoRetrasado={pedidoRetrasado}
                 setpedidoRetrasado={setpedidoRetrasado}
                 setEditCard={setEditCard}
+                ordenEntregada={ordenEntregada}
+                ordenRetrasadaEntregada={ordenRetrasadaEntregada}
               />
             </div>
           ) : null}

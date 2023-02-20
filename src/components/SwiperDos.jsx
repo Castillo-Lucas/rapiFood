@@ -18,13 +18,10 @@ import { Navigation } from "swiper";
 function SwiperDos({
   pedidoRetrasado,
   setpedidoRetrasado,
-  setShowModal,
-  setMensajeModal,
   setEditCard,
-  ordenAgotada,
+  ordenEntregada,
+  ordenRetrasadaEntregada
 }) {
-    
-    console.log(pedidoRetrasado)
   return (
     <div>
       <Swiper
@@ -61,9 +58,9 @@ function SwiperDos({
               key={pedidosRetr.id}
               pedidoRetrasado={pedidosRetr}
               setpedidoRetrasado={setpedidoRetrasado}
-              setShowModal={setShowModal}
-              setMensajeModal={setMensajeModal}
               setEditCard={setEditCard}
+              ordenEntregada={ordenEntregada}
+              ordenRetrasadaEntregada={ordenRetrasadaEntregada}
             />
           </SwiperSlide>
         ))}

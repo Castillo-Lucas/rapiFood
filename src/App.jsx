@@ -18,17 +18,33 @@ function App() {
     setPedido(pedidoAgotado);
   };
 
+  console.log(pedidoEntregado)
+
   const ordenEntregada = (pedEntr) => {
+
+    
+
+
     let pedidoEntr = pedido.filter((orden) => orden.id === pedEntr.id);
     let objPedidoEntr = { ...pedidoEntr[0] };
     setPedidoEntregado([...pedidoEntregado, objPedidoEntr]);
 
     let borrarPedEntr = pedido.filter((orden) => orden.id !== pedEntr.id);
+
     setPedido(borrarPedEntr);
   };
 
-  const eliminarEntregada = (elimEntr) => {
+  const ordenRetrasadaEntregada = (ordenRetrEntr) => {
+    
+    let pedidoOrdenRetrEntr = pedidoRetrasado.filter((orden) => orden.id === ordenRetrEntr.id);
+    let objordenRetrEntr = { ...pedidoOrdenRetrEntr[0] };
+    setPedidoEntregado([...pedidoEntregado, objordenRetrEntr]);
 
+    let borrarOrdenRetrEntr = pedidoRetrasado.filter((orden) => orden.id !== ordenRetrEntr.id);
+    setpedidoRetrasado(borrarOrdenRetrEntr);
+  };
+
+  const eliminarEntregada = (elimEntr) => {
     let deletePedEntr = pedido.filter((orden) => orden.id !== elimEntr.id);
     setPedidoEntregado(deletePedEntr);
   };
@@ -57,6 +73,7 @@ function App() {
           setEditCard={setEditCard}
           ordenAgotada={ordenAgotada}
           ordenEntregada={ordenEntregada}
+          ordenRetrasadaEntregada={ordenRetrasadaEntregada}
           eliminarEntregada={eliminarEntregada}
         />
       </div>

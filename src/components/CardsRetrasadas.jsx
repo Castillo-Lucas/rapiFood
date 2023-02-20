@@ -7,6 +7,8 @@ const CardsRetrasadas = ({
   pedidoRetrasado,
   setpedidoRetrasado,
   setEditCard,
+  ordenEntregada,
+  ordenRetrasadaEntregada
 }) => {
   const {
     nombreApellido,
@@ -52,6 +54,7 @@ const CardsRetrasadas = ({
     }).then((response) => {
       if (response.isConfirmed) {
         console.log("pedido entregado");
+        ordenRetrasadaEntregada(pedidoRetrasado)
       }
     });
   };
@@ -140,7 +143,7 @@ const CardsRetrasadas = ({
           className="font-normal text-base text-neutral-100 text-center
               w-full py-2 mb-1
               rounded-lg border border-gray-400 hover:bg-teal-600 hover:font-medium  active:bg-teal-900 active:font-normal transition-colors"
-          onClick={handleEntregar}
+              onClick={handleEntregar}
         >
           Entregado
         </button>

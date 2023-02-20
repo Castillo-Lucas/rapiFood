@@ -29,22 +29,6 @@ function CardsAtiempo({
     }
   }, [editTime]);
 
-  const handleEntregar = () => {
-    Swal.fire({
-      text: "Confirmar entrega del pedido!",
-      icon: "info",
-      iconColor: "#0D9488",
-      confirmButtonText: "Entregar Pedido",
-      confirmButtonColor: "#B4650B",
-      showDenyButton: true,
-      denyButtonText: "No entregar aun",
-    }).then((response) => {
-      if (response.isConfirmed) {
-        ordenEntregada(pedido)
-      }
-    });
-  };
-
   const handleModal = () => {
     Swal.fire({
       title: "Observaciones",
@@ -58,6 +42,22 @@ function CardsAtiempo({
     }).then((response) => {
       if (response.isConfirmed) {
         setEditCard(pedido);
+      }
+    });
+  };
+
+  const handleEntregar = () => {
+    Swal.fire({
+      text: "Confirmar entrega del pedido!",
+      icon: "info",
+      iconColor: "#0D9488",
+      confirmButtonText: "Entregar Pedido",
+      confirmButtonColor: "#B4650B",
+      showDenyButton: true,
+      denyButtonText: "No entregar aun",
+    }).then((response) => {
+      if (response.isConfirmed) {
+        ordenEntregada(pedido)
       }
     });
   };
