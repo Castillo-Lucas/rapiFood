@@ -8,6 +8,7 @@ function CardsAtiempo({
   setEditCard,
   ordenAgotada,
   ordenEntregada,
+  ordenCancelada
 }) {
   const {
     nombreApellido,
@@ -74,6 +75,7 @@ function CardsAtiempo({
     }).then((response) => {
       if (response.isDenied) {
         console.log("pedido canelado");
+        ordenCancelada(pedido)
       }
     });
   };

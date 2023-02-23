@@ -23,6 +23,7 @@ function SwiperUno({
   setEditCard,
   ordenAgotada,
   ordenEntregada,
+  ordenCancelada
 }) {
   return (
     <div>
@@ -59,10 +60,11 @@ function SwiperUno({
             <CardsAtiempo
               key={pedidos.id}
               pedido={pedidos}
-              setPedido = {setPedido}
+              setPedido={setPedido}
               setEditCard={setEditCard}
-              ordenAgotada = {ordenAgotada}
-              ordenEntregada = {ordenEntregada}
+              ordenAgotada={ordenAgotada}
+              ordenEntregada={ordenEntregada}
+              ordenCancelada={ordenCancelada}
             />
           </SwiperSlide>
         ))}

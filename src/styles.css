@@ -54,7 +54,7 @@
   }
 
   .swiper{
-    height: 115%;
+    height: 107%;
   }
 
   .swiper-button-next, .swiper-button-prev {
@@ -77,7 +77,6 @@
   .swiper-button-next:active, .swiper-button-prev:active {
     background-color: rgba(87, 85, 85, 0.951);
   }
-
 
   .swiper-button-prev {
     margin-left: -8px;

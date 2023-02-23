@@ -7,7 +7,10 @@ function App() {
   const [pedido, setPedido] = useState([]);
   const [pedidoRetrasado, setpedidoRetrasado] = useState([]);
   const [pedidoEntregado, setPedidoEntregado] = useState([]);
+  const [pedidoCancelado, setPedidoCancelado] = useState([]);
   const [editCard, setEditCard] = useState({});
+
+  console.log(pedidoEntregado);
 
   const ordenAgotada = (ped) => {
     let pedidoRetr = pedido.filter((orden) => orden.id === ped.id);
@@ -18,35 +21,67 @@ function App() {
     setPedido(pedidoAgotado);
   };
 
-  console.log(pedidoEntregado)
-
   const ordenEntregada = (pedEntr) => {
+    //Ordenes a Tiempo
+    if (pedido.some((orden) => orden.id === pedEntr.id)) {
+      let pedidoEntr = pedido.filter((orden) => orden.id === pedEntr.id);
+      let objPedidoEntr = { ...pedidoEntr[0] };
+      setPedidoEntregado([...pedidoEntregado, objPedidoEntr]);
 
-    
+      let borrarPedEntr = pedido.filter((orden) => orden.id !== pedEntr.id);
+      setPedido(borrarPedEntr);
+    } else if (pedidoRetrasado.some((orden) => orden.id === pedEntr.id)) {
+      //Ordenes Retrasadas
+      let pedidoOrdenRetrEntr = pedidoRetrasado.filter(
+        (orden) => orden.id === pedEntr.id
+      );
+      let objordenRetrEntr = { ...pedidoOrdenRetrEntr[0] };
+      setPedidoEntregado([...pedidoEntregado, objordenRetrEntr]);
 
-
-    let pedidoEntr = pedido.filter((orden) => orden.id === pedEntr.id);
-    let objPedidoEntr = { ...pedidoEntr[0] };
-    setPedidoEntregado([...pedidoEntregado, objPedidoEntr]);
-
-    let borrarPedEntr = pedido.filter((orden) => orden.id !== pedEntr.id);
-
-    setPedido(borrarPedEntr);
+      let borrarOrdenRetrEntr = pedidoRetrasado.filter(
+        (orden) => orden.id !== pedEntr.id
+      );
+      setpedidoRetrasado(borrarOrdenRetrEntr);
+    }
   };
 
-  const ordenRetrasadaEntregada = (ordenRetrEntr) => {
-    
-    let pedidoOrdenRetrEntr = pedidoRetrasado.filter((orden) => orden.id === ordenRetrEntr.id);
-    let objordenRetrEntr = { ...pedidoOrdenRetrEntr[0] };
-    setPedidoEntregado([...pedidoEntregado, objordenRetrEntr]);
+  const ordenCancelada = (pedCanc) => {
+    //Ordenes a Tiempo
+    if (pedido.some((orden) => orden.id === pedCanc.id)) {
+      let pedidoCanc = pedido.filter((orden) => orden.id === pedCanc.id);
+      let objPedidoCanc = { ...pedidoCanc[0] };
+      setPedidoCancelado([...pedidoCancelado, objPedidoCanc]);
 
-    let borrarOrdenRetrEntr = pedidoRetrasado.filter((orden) => orden.id !== ordenRetrEntr.id);
-    setpedidoRetrasado(borrarOrdenRetrEntr);
+      let borrarCanc = pedido.filter((orden) => orden.id !== pedCanc.id);
+      setPedido(borrarCanc);
+    } else if (pedidoRetrasado.some((orden) => orden.id === pedCanc.id)) {
+      //Ordenes Retrasadas
+      let pedRetrCanc = pedidoRetrasado.filter(
+        (orden) => orden.id === pedCanc.id
+      );
+      let objPedRetrCanc = { ...pedRetrCanc[0] };
+      setPedidoCancelado([...pedidoCancelado, objPedRetrCanc]);
+
+      let borrarOrdenRetrCanc = pedidoRetrasado.filter(
+        (orden) => orden.id !== pedCanc.id
+      );
+      setpedidoRetrasado(borrarOrdenRetrCanc);
+    }
   };
 
-  const eliminarEntregada = (elimEntr) => {
-    let deletePedEntr = pedido.filter((orden) => orden.id !== elimEntr.id);
-    setPedidoEntregado(deletePedEntr);
+  const eliminarRegistro = (elimOrden) => {
+    //Pedidos Entregados
+    if (pedidoEntregado.some((orden) => orden.id === elimOrden.id)) {
+      let deletePedEntr = pedidoEntregado.filter(
+        (orden) => orden.id !== elimOrden.id
+      );
+      setPedidoEntregado(deletePedEntr);
+    } else if (pedidoCancelado.some((orden) => orden.id === elimOrden.id)) {
+      let deletePedCanc = pedidoCancelado.filter(
+        (orden) => orden.id !== elimOrden.id
+      );
+      setPedidoCancelado(deletePedCanc);
+    }
   };
 
   return (
@@ -70,11 +105,13 @@ function App() {
           setpedidoRetrasado={setpedidoRetrasado}
           pedidoEntregado={pedidoEntregado}
           setPedidoEntregado={setPedidoEntregado}
+          pedidoCancelado={pedidoCancelado}
+          setPedidoCancelado={setPedidoCancelado}
           setEditCard={setEditCard}
           ordenAgotada={ordenAgotada}
           ordenEntregada={ordenEntregada}
-          ordenRetrasadaEntregada={ordenRetrasadaEntregada}
-          eliminarEntregada={eliminarEntregada}
+          ordenCancelada={ordenCancelada}
+          eliminarRegistro={eliminarRegistro}
         />
       </div>
     </div>

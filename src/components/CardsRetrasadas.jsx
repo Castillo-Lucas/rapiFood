@@ -8,7 +8,7 @@ const CardsRetrasadas = ({
   setpedidoRetrasado,
   setEditCard,
   ordenEntregada,
-  ordenRetrasadaEntregada
+  ordenCancelada
 }) => {
   const {
     nombreApellido,
@@ -54,7 +54,7 @@ const CardsRetrasadas = ({
     }).then((response) => {
       if (response.isConfirmed) {
         console.log("pedido entregado");
-        ordenRetrasadaEntregada(pedidoRetrasado)
+        ordenEntregada(pedidoRetrasado)
       }
     });
   };
@@ -71,6 +71,7 @@ const CardsRetrasadas = ({
     }).then((response) => {
       if (response.isDenied) {
         console.log("pedido canelado");
+        ordenCancelada(pedidoRetrasado)
       }
     });
   };

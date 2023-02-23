@@ -16,9 +16,7 @@ import "../styles.css";
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 
-function SwiperTres({pedidoEntregado, setPedidoEntregado, eliminarEntregada}) {
-
-    console.log(pedidoEntregado)
+function SwiperTres({pedidoEntregado, setPedidoEntregado, eliminarRegistro}) {
   return (
     <div>
       <Swiper
@@ -55,7 +53,7 @@ function SwiperTres({pedidoEntregado, setPedidoEntregado, eliminarEntregada}) {
               key={pedidos.id}
               pedidoEntregado={pedidos}
               setPedidoEntregado = {setPedidoEntregado}
-              eliminarEntregada={eliminarEntregada}
+              eliminarRegistro={eliminarRegistro}
             />
           </SwiperSlide>
         ))}

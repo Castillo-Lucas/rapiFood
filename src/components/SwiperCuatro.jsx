@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import CardsRetrasadas from "./CardsRetrasadas";
+import React from "react";
+import CardsCanceladas from "./CardsCanceladas";
+
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,13 +16,8 @@ import "../styles.css";
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 
-function SwiperDos({
-  pedidoRetrasado,
-  setpedidoRetrasado,
-  setEditCard,
-  ordenEntregada,
-  ordenCancelada
-}) {
+function SwiperCuatro({ pedidoCancelado, setPedidoCancelado, eliminarRegistro }) {
+
   return (
     <div>
       <Swiper
@@ -52,15 +48,13 @@ function SwiperDos({
         modules={[Navigation, Pagination]}
         className="mySwiper"
       >
-        {pedidoRetrasado.map((pedidosRetr) => (
-          <SwiperSlide key={pedidosRetr.id}>
-            <CardsRetrasadas
-              key={pedidosRetr.id}
-              pedidoRetrasado={pedidosRetr}
-              setpedidoRetrasado={setpedidoRetrasado}
-              setEditCard={setEditCard}
-              ordenEntregada={ordenEntregada}
-              ordenCancelada={ordenCancelada}
+        {pedidoCancelado.map((pedidos) => (
+          <SwiperSlide key={pedidos.id}>
+            <CardsCanceladas
+              key={pedidos.id}
+              pedidoCancelado={pedidos}
+              setPedidoCancelado = {setPedidoCancelado}
+              eliminarRegistro={eliminarRegistro}
             />
           </SwiperSlide>
         ))}
@@ -69,4 +63,4 @@ function SwiperDos({
   );
 }
 
-export default SwiperDos;
+export default SwiperCuatro;

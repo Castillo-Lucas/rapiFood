@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import "../styles.css";
 
-function CardsEntregadas({
-  pedidoEntregado,
-  eliminarRegistro,
-}) {
+function CardsCanceladas({ pedidoCancelado, setPedidoCancelado, eliminarRegistro }) {
   const {
     nombreApellido,
     delivery,
@@ -18,7 +15,7 @@ function CardsEntregadas({
     vuelto,
     observaciones,
     id,
-  } = pedidoEntregado;
+  } = pedidoCancelado;
 
   const handleEliminar = () => {
     Swal.fire({
@@ -31,7 +28,7 @@ function CardsEntregadas({
       denyButtonText: "No eliminar aun",
     }).then((response) => {
       if (response.isConfirmed) {
-        eliminarRegistro(pedidoEntregado);
+        eliminarRegistro(pedidoCancelado);
       }
     });
   };
@@ -48,7 +45,7 @@ function CardsEntregadas({
   };
 
   return (
-    <div className="w-60 px-5 py-3 border border-zinc-700 rounded-lg bg-zinc-900">
+    <div className="w-60 px-5 py-3 mt-5 border border-zinc-700 rounded-lg bg-zinc-900">
       {/*Nombre del Cliente*/}
       <h5 className="text-2xl text-gray-50/50 font-bold text-start tracking-wide mb-2 border-b-2 border-b-gray-500 pb-2">
         {nombreApellido}
@@ -125,12 +122,12 @@ function CardsEntregadas({
 
       {/*Estado*/}
       <div className="py-5">
-        <p className="mt-3 font-bold text-lg text-center text-emerald-500/50 dark:text-gray-400">
-          Entregado
+        <p className="mt-3 font-bold text-lg text-center text-red-500/50 dark:text-gray-400">
+          Cancelado
         </p>
       </div>
     </div>
   );
 }
 
-export default CardsEntregadas;
+export default CardsCanceladas;
