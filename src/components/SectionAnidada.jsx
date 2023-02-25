@@ -192,13 +192,11 @@ const SectionAnidada = ({
             className="font-normal text-base text-gray-600 my-1 bg-gray-200"
             value="SelectCategoría"
             id="SelectCategoría"
-            defaultValue={"SelectCategoría"}
-            disabled
+            defaultValue={"SelectCategoría"}            
           >
             Selecciona la Categoría
           </option>
 
-          <option className="font-normal text-base text-gray-600 my-1 bg-gray-200"></option>
 
           {categorias.map((categ) => (
             <option
@@ -231,12 +229,10 @@ const SectionAnidada = ({
             value="SelectCategoría"
             id="SelectCategoría"
             defaultValue={"SelectCategoría"}
-            disabled
+            
           >
-            Selecciona la Categoría
+            Selecciona el Producto
           </option>
-
-          <option className="font-normal text-base text-gray-600 my-1 bg-gray-200"></option>
 
           {selecProd.map((prod) => (
             <option

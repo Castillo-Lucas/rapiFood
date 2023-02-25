@@ -49,7 +49,7 @@ function SwiperCuatro({ pedidoCancelado, setPedidoCancelado, eliminarRegistro })
         className="mySwiper"
       >
         {pedidoCancelado.map((pedidos) => (
-          <SwiperSlide key={pedidos.id}>
+          <SwiperSlide key={pedidos.id} className="flex pb-5">
             <CardsCanceladas
               key={pedidos.id}
               pedidoCancelado={pedidos}

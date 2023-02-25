@@ -25,11 +25,11 @@ function CardsSection({
       pedidoRetrasado.length >= 1 ||
       pedidoEntregado.length >= 1 ||
       pedidoCancelado.length >= 1 ? (
-        <div>
-          <div className="grid grid-rows-4 grid-flow-col gap-8 pt-5 mx-10">
+        <div className="xl:h-screen flex flex-col justify-between">
+          <div className="pt-5 mx-10">
             {/*Fila 1*/}
             {pedido.length >= 1 ? (
-              <div className="grid grid-cols-1">
+              <div className="mb-5">
                 <SwiperUno
                   pedido={pedido}
                   setPedido={setPedido}
@@ -44,7 +44,7 @@ function CardsSection({
 
             {/*Fila 2*/}
             {pedidoRetrasado.length >= 1 ? (
-              <div className="grid grid-cols-1">
+              <div className="mb-5">
                 <SwiperDos
                   pedidoRetrasado={pedidoRetrasado}
                   setpedidoRetrasado={setpedidoRetrasado}
@@ -57,7 +57,7 @@ function CardsSection({
 
             {/*Fila 3*/}
             {pedidoEntregado.length >= 1 ? (
-              <div className="grid grid-cols-1">
+              <div>
                 <SwiperTres
                   pedidoEntregado={pedidoEntregado}
                   setPedidoEntregado={setPedidoEntregado}
@@ -68,7 +68,7 @@ function CardsSection({
 
             {/*Fila 4*/}
             {pedidoCancelado.length >= 1 ? (
-              <div className="grid grid-cols-1">
+              <div className="mb-3">
                 <SwiperCuatro
                   pedidoCancelado={pedidoCancelado}
                   setPedidoCancelado={setPedidoCancelado}

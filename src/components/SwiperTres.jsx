@@ -48,7 +48,7 @@ function SwiperTres({pedidoEntregado, setPedidoEntregado, eliminarRegistro}) {
         className="mySwiper"
       >
         {pedidoEntregado.map((pedidos) => (
-          <SwiperSlide key={pedidos.id}>
+          <SwiperSlide key={pedidos.id} className="flex pb-5">
             <CardsEntregadas
               key={pedidos.id}
               pedidoEntregado={pedidos}

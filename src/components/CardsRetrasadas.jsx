@@ -146,7 +146,7 @@ const CardsRetrasadas = ({
               rounded-lg border border-gray-400 hover:bg-teal-600 hover:font-medium  active:bg-teal-900 active:font-normal transition-colors"
               onClick={handleEntregar}
         >
-          Entregado
+          Entregar
         </button>
 
         <div className="flex content-evenly">

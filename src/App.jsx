@@ -1,16 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CardsSection from "./components/CardsSection";
 import FormSection from "./components/FormSection";
 import "./App.css";
 
 function App() {
-  const [pedido, setPedido] = useState([]);
-  const [pedidoRetrasado, setpedidoRetrasado] = useState([]);
-  const [pedidoEntregado, setPedidoEntregado] = useState([]);
-  const [pedidoCancelado, setPedidoCancelado] = useState([]);
+  const [pedido, setPedido] = useState(JSON.parse(localStorage.getItem('pedido')) ?? []);
+  const [pedidoRetrasado, setpedidoRetrasado] = useState(JSON.parse(localStorage.getItem('pedidoRetrasado')) ?? []);
+  const [pedidoEntregado, setPedidoEntregado] = useState(JSON.parse(localStorage.getItem('pedidoEntregado')) ?? []);
+  const [pedidoCancelado, setPedidoCancelado] = useState(JSON.parse(localStorage.getItem('pedidoCancelado')) ?? []);
   const [editCard, setEditCard] = useState({});
 
-  console.log(pedidoEntregado);
+  console.log(pedido)
+
+  useEffect(()=>{
+    localStorage.setItem('pedido', JSON.stringify(pedido))
+  },[pedido])
+
+  useEffect(()=>{
+    localStorage.setItem('pedidoRetrasado', JSON.stringify(pedidoRetrasado))
+  },[pedidoRetrasado])
+
+  useEffect(()=>{
+    localStorage.setItem('pedidoEntregado', JSON.stringify(pedidoEntregado))
+  },[pedidoEntregado])
+
+  useEffect(()=>{
+    localStorage.setItem('pedidoCancelado', JSON.stringify(pedidoCancelado))
+  },[pedidoCancelado])
 
   const ordenAgotada = (ped) => {
     let pedidoRetr = pedido.filter((orden) => orden.id === ped.id);
@@ -83,6 +99,10 @@ function App() {
       setPedidoCancelado(deletePedCanc);
     }
   };
+
+
+
+
 
   return (
     <div className="App">

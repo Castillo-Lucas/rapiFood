@@ -17,75 +17,75 @@
   }
   
   .swiper {
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
   }
   
   .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: none;
-  
-    /* Center slide text vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center !important;
+    font-size: 18px !important;
+    background: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
   
   .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .swiper-pagination, .swiper-pagination-clickable, .swiper-pagination-bullets, .swiper-pagination-horizontal{
+    margin-bottom: -12px !important;
   }
   
   .swiper-pagination-clickable .swiper-pagination-bullet {
-    cursor: pointer;
+    cursor: pointer !important;
   }
 
   .swiper-pagination-bullet{
-    background-color: #0d9489c6;
-    width: 10px;
-    height: 10px;
+    background-color: #0d9489c6 !important;
+    width: 10px !important;
+    height: 10px !important;
   }
   
   .swiper-pagination-bullet-active{
-    background-color: #0D9488;
+    background-color: #0D9488 !important;
   }
 
   .swiper{
-    height: 107%;
+    height: 100% !important;
   }
 
   .swiper-button-next, .swiper-button-prev {
-    top: var(--swiper-navigation-top-offset,48%);
-    background-color: rgba(255, 255, 255, 0.327);
-    width: 25px;
-    height: 25px;
+    top: var(--swiper-navigation-top-offset,48%) !important;
+    background-color: rgba(255, 255, 255, 0.327) !important;
+    width: 25px !important;
+    height: 25px !important;
     border-radius: 20px;
-    margin: 0px;
-    padding: 0px;
-    --swiper-navigation-size: 15px;
-    --swiper-theme-color: rgb(255, 255, 255);
-    transition: all 300ms;
+    margin: 0px !important;
+    padding: 0px !important;
+    --swiper-navigation-size: 15px !important;
+    --swiper-theme-color: rgb(255, 255, 255) !important;
+    transition: all 300ms !important;
   }
 
   .swiper-button-next:hover, .swiper-button-prev:hover {
-    background-color: rgba(255, 255, 255, 0.52);
+    background-color: rgba(255, 255, 255, 0.52) !important;
   }
 
   .swiper-button-next:active, .swiper-button-prev:active {
-    background-color: rgba(87, 85, 85, 0.951);
+    background-color: rgba(87, 85, 85, 0.951) !important;
   }
 
   .swiper-button-prev {
-    margin-left: -8px;
+    margin-left: -8px !important;
   }
   .swiper-button-next {
-    margin-right: -8px;
+    margin-right: -8px !important;
   }
-
-
 
 /*Sweet Alert 2*/    
 

@@ -56,7 +56,7 @@ function SwiperUno({
         className="mySwiper"
       >
         {pedido.map((pedidos) => (
-          <SwiperSlide key={pedidos.id}>
+          <SwiperSlide key={pedidos.id} className="flex pb-5">
             <CardsAtiempo
               key={pedidos.id}
               pedido={pedidos}

@@ -53,7 +53,7 @@ function SwiperDos({
         className="mySwiper"
       >
         {pedidoRetrasado.map((pedidosRetr) => (
-          <SwiperSlide key={pedidosRetr.id}>
+          <SwiperSlide key={pedidosRetr.id} className="flex pb-5">
             <CardsRetrasadas
               key={pedidosRetr.id}
               pedidoRetrasado={pedidosRetr}
