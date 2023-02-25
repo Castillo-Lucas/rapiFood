@@ -42,7 +42,7 @@ function CardsCanceladas({ pedidoCancelado, setPedidoCancelado, eliminarRegistro
   };
 
   return (
-    <div className="w-60 px-5 py-3 mt-5 border border-zinc-700 rounded-lg bg-zinc-900">
+    <div className="w-60 px-5 py-3 mt-5 border border-zinc-700 rounded-lg bg-zinc-900 cardHeight h-a">
       {/*Nombre del Cliente*/}
       <h5 className="text-2xl text-gray-50/50 font-bold text-start tracking-wide mb-2 border-b-2 border-b-gray-500 pb-2">
         {nombreApellido}

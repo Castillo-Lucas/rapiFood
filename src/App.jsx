@@ -11,7 +11,7 @@ function App() {
   const [pedidoCancelado, setPedidoCancelado] = useState(JSON.parse(localStorage.getItem('pedidoCancelado')) ?? []);
   const [editCard, setEditCard] = useState({});
 
-   console.log(pedidoRetrasado)
+  console.log(pedido)
   useEffect(()=>{
     localStorage.setItem('pedido', JSON.stringify(pedido))
     localStorage.setItem('pedidoRetrasado', JSON.stringify(pedidoRetrasado))
@@ -123,7 +123,16 @@ function App() {
           eliminarRegistro={eliminarRegistro}
         />
 
-        <CardsDePrueba/>
+        <CardsDePrueba
+        pedido={pedido}
+        pedidoRetrasado={pedidoRetrasado}
+        pedidoEntregado={pedidoEntregado}
+        pedidoCancelado={pedidoCancelado}
+        setPedido={setPedido}
+        setpedidoRetrasado={setpedidoRetrasado}
+        setPedidoEntregado={setPedidoEntregado}
+        setPedidoCancelado={setPedidoCancelado}
+        />
       </div>
     </div>
   );

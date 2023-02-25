@@ -80,7 +80,7 @@ function CardsAtiempo({
   };
 
   return (
-    <div className="w-60 px-5 py-3 border border-zinc-700 rounded-lg bg-zinc-900">
+    <div className="w-60 px-5 py-3 border border-zinc-700 rounded-lg bg-zinc-900 cardHeight h-auto">
       {/*Nombre del Cliente*/}
       <h5 className="text-2xl text-gray-50 font-bold text-start tracking-wide mb-2 border-b-2 pb-2">
         {nombreApellido}
@@ -176,11 +176,11 @@ function CardsAtiempo({
 
       {/*Estado*/}
       <div className="flex justify-between">
-        {editTime >= 81 ? (
+        {editTime >= 41 ? (
           <p className="mt-3 font-bold text-lg text-center text-emerald-500 dark:text-gray-400">
             A Tiempo
           </p>
-        ) : editTime >= 41 ? (
+        ) : editTime >= 21 ? (
           <p className="mt-3 font-bold text-lg text-center text-orange-300 dark:text-gray-400">
             A Tiempo
           </p>

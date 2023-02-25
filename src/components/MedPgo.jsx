@@ -26,8 +26,11 @@ const MedPgo = ({
   }, [pagaCon]);
 
   useEffect(() => {
-    setValorCta(price / cantCtas);
+    const totalCta = Math.floor(price / cantCtas)
+    setValorCta(totalCta);
   }, [cantCtas]);
+
+  
 
   return (
     <div className="mt-4 mb-6">
@@ -121,9 +124,7 @@ const MedPgo = ({
             </span>
           </p>
         </div>
-      ) : (
-        <p></p>
-      )}
+      ) : null}
     </div>
   );
 };
