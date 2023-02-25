@@ -18,8 +18,7 @@ function CardsAtiempo({
     price,
     medPgo,
     vuelto,
-    observaciones,
-    id,
+    observaciones
   } = pedido;
 
   const [editTime, setEditTime] = useState();  

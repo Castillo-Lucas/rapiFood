@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CardsSection from "./components/CardsSection";
 import FormSection from "./components/FormSection";
+import CardsDePrueba from "./components/CardsDePrueba";
 import "./App.css";
 
 function App() {
@@ -10,23 +11,13 @@ function App() {
   const [pedidoCancelado, setPedidoCancelado] = useState(JSON.parse(localStorage.getItem('pedidoCancelado')) ?? []);
   const [editCard, setEditCard] = useState({});
 
-  console.log(pedido)
-
+   console.log(pedidoRetrasado)
   useEffect(()=>{
     localStorage.setItem('pedido', JSON.stringify(pedido))
-  },[pedido])
-
-  useEffect(()=>{
     localStorage.setItem('pedidoRetrasado', JSON.stringify(pedidoRetrasado))
-  },[pedidoRetrasado])
-
-  useEffect(()=>{
     localStorage.setItem('pedidoEntregado', JSON.stringify(pedidoEntregado))
-  },[pedidoEntregado])
-
-  useEffect(()=>{
     localStorage.setItem('pedidoCancelado', JSON.stringify(pedidoCancelado))
-  },[pedidoCancelado])
+  },[pedido, pedidoRetrasado, pedidoEntregado, pedidoCancelado])
 
   const ordenAgotada = (ped) => {
     let pedidoRetr = pedido.filter((orden) => orden.id === ped.id);
@@ -102,8 +93,6 @@ function App() {
 
 
 
-
-
   return (
     <div className="App">
       <div className="grid grid-cols-4 h-screen">
@@ -133,6 +122,8 @@ function App() {
           ordenCancelada={ordenCancelada}
           eliminarRegistro={eliminarRegistro}
         />
+
+        <CardsDePrueba/>
       </div>
     </div>
   );

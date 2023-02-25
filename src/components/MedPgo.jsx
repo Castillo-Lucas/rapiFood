@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 const MedPgo = ({
   medPgo,
@@ -49,12 +49,10 @@ const MedPgo = ({
           className="font-normal text-base text-gray-600 my-1 bg-gray-200"
           value="SelectMdoPgo"
           id="SelectMdoPgo"
-          defaultValue={"SelectMdoPgo"}
-          disabled
+          defaultValue={"SelectMdoPgo"}          
         >
           Selecciona el Medio de Pago
         </option>
-        <option className="font-normal text-base text-gray-600 my-1 bg-gray-200"></option>
 
         {mediosPagos.map((categ) => (
           <option

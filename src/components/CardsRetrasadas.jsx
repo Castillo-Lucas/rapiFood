@@ -5,7 +5,6 @@ import "../styles.css";
 
 const CardsRetrasadas = ({
   pedidoRetrasado,
-  setpedidoRetrasado,
   setEditCard,
   ordenEntregada,
   ordenCancelada
@@ -15,13 +14,10 @@ const CardsRetrasadas = ({
     delivery,
     domicilio,
     products,
-    cantidad,
     price,
     medPgo,
-    pagaCon,
     vuelto,
-    observaciones,
-    id,
+    observaciones
   } = pedidoRetrasado;
 
   const handleModal = () => {

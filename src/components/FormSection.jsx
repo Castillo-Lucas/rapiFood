@@ -63,7 +63,7 @@ function FormSection({ pedido, setPedido, pedidoRetrasado, setpedidoRetrasado, e
     }
 
     setError(false);
-
+    
     const objetoPedido = {
       nombreApellido,
       delivery,
@@ -99,7 +99,6 @@ function FormSection({ pedido, setPedido, pedidoRetrasado, setpedidoRetrasado, e
       );
 
       setpedidoRetrasado(pedidoRetrasadoAct);
-
       setEditCard({});
     }
 

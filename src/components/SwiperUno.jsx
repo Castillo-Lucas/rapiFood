@@ -1,7 +1,5 @@
 import React from "react";
 import CardsAtiempo from "./CardsAtiempo";
-import CountDown from "./CountDown";
-
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Swal from "sweetalert2";
 import "../styles.css";
 
@@ -8,13 +8,10 @@ function CardsCanceladas({ pedidoCancelado, setPedidoCancelado, eliminarRegistro
     delivery,
     domicilio,
     products,
-    cantidad,
     price,
     medPgo,
-    pagaCon,
     vuelto,
-    observaciones,
-    id,
+    observaciones
   } = pedidoCancelado;
 
   const handleEliminar = () => {

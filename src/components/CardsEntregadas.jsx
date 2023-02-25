@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Swal from "sweetalert2";
 import "../styles.css";
 
@@ -11,13 +11,10 @@ function CardsEntregadas({
     delivery,
     domicilio,
     products,
-    cantidad,
     price,
     medPgo,
-    pagaCon,
     vuelto,
-    observaciones,
-    id,
+    observaciones
   } = pedidoEntregado;
 
   const handleEliminar = () => {
